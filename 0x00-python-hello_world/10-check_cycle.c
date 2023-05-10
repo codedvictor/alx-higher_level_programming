@@ -6,8 +6,8 @@
  * @list: A singly-linked list.
  *
  * Return: If there is no cycle - 0.
- *         If there is a cycle - 1.
  */
+
 int check_cycle(listint_t *list)
 {
 	listint_t *fhead, *nhead;
@@ -24,7 +24,7 @@ int check_cycle(listint_t *list)
 			return (1);
 
 		fhead = fhead->next;
-		fhead = fhead->next->next;
+		nhead = nhead->next->next;
 	}
 
 	return (0);
