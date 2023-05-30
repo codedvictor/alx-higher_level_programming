@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-    """The square class is created
-    just to permit block of python code to run through"""
+"""The square class is created just to permit"""
+
 
 class Square:
     """pass statement added"""
     pass
-    #pass statement
+    """pass statement"""
