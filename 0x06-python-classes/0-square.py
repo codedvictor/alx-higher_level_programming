@@ -1,5 +1,6 @@
 #!/usr/bin/python3
+"""The sqaure class created"""
 
 class Square:
-    """This is to pass class"""
+    """pass statement added"""
     pass
