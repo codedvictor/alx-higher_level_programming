@@ -66,6 +66,6 @@ class Square:
             pt = ' ' * x
             for i in range(y):
                 print('')
-                while size:
-                    print(pt, st, sep="")
-                    size -= 1
+            while size:
+                print(pt, st, sep="")
+                size -= 1
