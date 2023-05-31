@@ -3,7 +3,7 @@ import math
 
 
 class MagicClass:
-    """A circle class"""
+    """create a circle class"""
 
     def __init__(self, radius=0):
         """Initialization"""
