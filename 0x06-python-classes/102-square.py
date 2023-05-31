@@ -50,4 +50,3 @@ class Square:
 
     def __eq__(self, val):
         return self.size == val.size
-
