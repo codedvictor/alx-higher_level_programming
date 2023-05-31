@@ -56,6 +56,5 @@ class Square:
                 print()
             st = '#' * self.__size
             pt = ' ' * self.__position[0]
-            while self.__size:
+            for i in range(self.__size):
                 print(pt, st, sep="")
-                self.__size -= 1
