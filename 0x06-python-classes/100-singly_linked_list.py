@@ -3,6 +3,10 @@
 
 class Node:
     def __init__(self, data, next_node=None):
+        if type(data) is not int:
+            raise TypeError("data must be an integer")
+        if next_node is not None and type(next_node) is not Node:
+            raise TypeError("next_node must be a Node object")
         self.__data = data
         self.__next_node = next_node
 
@@ -12,10 +16,9 @@ class Node:
 
     @data.setter
     def data(self, value):
-        self.__value =  value
-        data = value
-        if type(data) is not int:
+        if type(value) is not int:
             raise TypeError("data must be an integer")
+        self.__data = value
     
     @property
     def next_node(self):
@@ -23,18 +26,44 @@ class Node:
 
     @next_node.setter
     def next_node(self, value):
-        self.__value = value
-        next_node = value
-        if next_node is not None or type(next_node) is not Node:
+        if value is not None or type(value) is not Node:
             raise TypeError("next_node must be a Node object")
+        self.__next_node = value
 
 class SinglyLinkedList:
+    """Singly linked list head and function creation"""
+
+
     def __init__(self):
-        self.__head = head
-        for i in range(len(head)):
-            print(head[i])
+        """initialize the head"""
+        self.__head = None
+
+
+    def __repr__(self):
+        """return string of a data"""
+        strreturn = ""
+        if self.__head is None:
+            pass
+        else:
+            val = self.__head
+            while val is not None:
+                strreturn += str(val.data) + '\n'
+                val = val.next_node
+        return strreturn[:-1]
 
     def sorted_insert(self, value):
-        self.__value = value
-        head = value
-        if
+        """insert and sort list"""
+        if type(value) is not int:
+            raise TypeError("data must be an integer")
+        if self.__head is None:
+            self.__head = Node(value)
+        elif value < self.__head.data:
+            self.__head = Node(value, self.__head)
+        else:
+            newpr = self.__head
+            while newpr.next_node is not None and newpr.next_node.data < value:
+                newpr = newpr.next_node
+            if newpr.next_node is None:
+                newpr.next_node = Node(value)
+            else:
+                newpr.next_node = Node(value, newpr.next_node)
