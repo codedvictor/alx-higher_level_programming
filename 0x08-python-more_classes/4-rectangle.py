@@ -61,4 +61,5 @@ class Rectangle:
         return (stprt[:-1])
 
     def __repr__(self):
-        return ("Rectange({}, {})".format(self.__width, self.__height))
+        st = "Rectangle({}, {})".format(self.__width, self.__height)
+        return st
