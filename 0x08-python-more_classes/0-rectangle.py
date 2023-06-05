@@ -3,4 +3,5 @@
 
 class Rectangle:
     """This is a rectangle class file"""
-    pass
+    def __init__(self):
+        pass
