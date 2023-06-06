@@ -1,0 +1,67 @@
+==========================
+The `0-add_integer` module
+==========================
+
+`add_integer` is a fucntion that adds and returns the sum of 2 integers
+
+Using `add_integer`
+----------------------------
+
+Importing function from the module
+	  >>> add_integer = __import__('0-add_integer').add_integer
+
+Adding 2 integers
+       >>> add_integer(2, 5)
+       7
+
+Adding 1 integer and 1 float
+       >>> add_integer(-2, 5.6)
+       3
+
+Adding a character and an integer
+       >>> add_integer('2', 3)
+       Traceback (most recent call last):
+       		 ...
+       TypeError: a must be an integer
+
+Adding an integer and  a string
+       >>> add_integer(1, "ALX")
+       Traceback (most recent call last):
+       		 ...
+       TypeError: b must be an integer
+
+Calling with None:
+	>>> add_integer(None)
+	Traceback (most recent call last):
+		  ...
+	TypeError: a must be an integer
+
+Calling with a list:
+	>>> add_integer(2, [1])
+	Traceback (most recent call last):
+		  ...
+	TypeError: b must be an integer
+
+Calling with a tuple:
+	>>> add_integer((1, 2))
+	Traceback (most recent call last):
+		  ...
+	TypeError: a must be an integer
+
+Case overflow positive infinitive:
+     >>> add_integer(0, float('inf'))
+     Traceback (most recent call last):
+     	       ...
+     OverflowError: cannot convert float infinity to integer
+
+Case overflow negative infinitive:
+     >>> add_integer(float('-inf'), 0)
+     Traceback (most recent call last):
+     	       ...
+     OverflowError: cannot convert float infinity to integer
+
+Case float NaN:
+     >>> add_integer(float('nan'), 0)
+     Traceback (most recent call last):
+     	       ...
+     ValueError: cannot convert float NaN to integer

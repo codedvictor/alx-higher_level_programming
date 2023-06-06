@@ -1,0 +1,71 @@
+# run test with python3 -m doctest -v ./tests/0-add_integer.txt
+
+`add_integer` is a fucntion that adds and returns the sum of 2 integers
+
+Importing function from the module
+
+>>> add_integer = __import__('0-add_integer').add_integer
+
+Test no a b args:
+	>>> add_integer(None)
+	Traceback (most recent call last):
+	...
+	TypeError: a must be an integer
+     
+Test no a args:
+	>>> add_integer(None, None)
+	Traceback (most recent call last):
+	...
+	TypeError: a must be an integer
+
+Test signed and unsigned ints and floats:
+	>>> add_integer(3, 0)
+	3
+	>>> add_integer(-2, 5)
+	3
+	>>> add_integer(2.5, 3.9)
+	5
+	>>> add_integer(-5.9, 2)
+	-3
+
+Test using args with default b=98 value:
+	>>> add_integer(15)
+	113
+	>>> add_integer(-10)
+	88
+
+Test tuple:
+	>>> add_integer((1, 2))
+	Traceback (most recent call last):
+	...
+	TypeError: a must be an integer
+
+Test string:
+	>>> add_integer('hey')
+	Traceback (most recent call last):
+	...
+	TypeError: a must be an integer
+
+Test array or list:
+	>>> add_integer(0, [1, 2, 3])
+	Traceback (most recent call last):
+	...
+	TypeError: b must be an integer
+
+Test max numbers Python can handle ("inf" is infinity):
+	>>> add_integer(float("inf"))
+	Traceback (most recent call last):
+	...
+	OverflowError: cannot convert float infinity to integer
+
+Test min numbers Python can handle ("inf" is infinity):
+	>>> add_integer(float('-inf'))
+	Traceback (most recent call last):
+	...
+	OverflowError: cannot convert float infinity to integer
+
+Test special float NaN in Python (not a number):
+	>>> add_integer(float('NaN'))
+	Traceback (most recent call last):
+	...
+	ValueError: cannot convert float NaN to integer
