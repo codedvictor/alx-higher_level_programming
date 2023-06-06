@@ -1,0 +1,48 @@
+# run test with python3 -m doctest -v ./tests/5-text_indentation.txt
+
+First import method to test
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+SUCCESS CASES:
+
+Test string:
+     >>> text_indentation("""I'm unstoppable and brilliant exude grace above. \
+     ... Are you sure? Utrum igitur tibi litteram videor an totas paginas commovere? \
+     ... Non autem hoc: igitur ne illud quidem. Fortasse id optimum, sed ubi illud""")
+     I'm unstoppable and brilliant exude grace above.
+     <BLANKLINE>
+     Are you sure?
+     <BLANKLINE>
+     Utrum igitur tibi litteram videor an totas paginas commovere?
+     <BLANKLINE>
+     Non autem hoc:
+     <BLANKLINE>
+     igitur ne illud quidem.
+     <BLANKLINE>
+     Fortasse id optimum, sed ubi illud
+
+Test string with extra spaces (shouldn't print spaces at beginning or end of lines):
+     >>> text_indentation("   Y B.     C Z?      E Q:     I H     ")
+     Y B.
+     <BLANKLINE>
+     C Z?
+     <BLANKLINE>
+     E Q:
+     <BLANKLINE>
+     I H
+
+     >>> text_indentation("   You again     \n     .     ")
+     You again
+     .
+     <BLANKLINE>
+
+     >>> text_indentation("      Yes      ")
+     Yes
+
+     >>> text_indentation("    ")
+
+Test other string:
+     >>> text_indentation(-3)
+     Traceback (most recent call last):
+     ...
+     TypeError: text must be a string
