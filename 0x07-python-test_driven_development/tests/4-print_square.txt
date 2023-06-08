@@ -6,7 +6,8 @@ First import method to test
 
 Test positive int size:
      >>> print_square(0)
-
+	<BLANKLINE>
+     
      >>> print_square(2)
      ##
      ##
