@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 """
 function that divides all elements of a matrix
 
@@ -11,6 +11,7 @@ All elements of the matrix should be divided by div, rounded to 2 decimal places
 Returns a new matrix
 You are not allowed to import any module
 """
+
 
 def matrix_divided(matrix, div):
     
