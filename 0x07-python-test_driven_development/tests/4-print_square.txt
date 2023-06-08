@@ -7,7 +7,6 @@ First import method to test
 Test positive int size:
      >>> print_square(0)
 
-
      >>> print_square(2)
      ##
      ##
