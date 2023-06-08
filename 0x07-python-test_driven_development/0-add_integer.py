@@ -3,6 +3,7 @@
 This function add 2 integers and float together
 """
 
+
 def add_integer(a, b=98):
     """
     a & b can only be an integer or floating number
@@ -13,4 +14,4 @@ def add_integer(a, b=98):
     if not isinstance(b, (int, float)):
         raise TypeError("b must be an integer")
 
-    return (int (a) + int(b))
+    return (int(a) + int(b))
