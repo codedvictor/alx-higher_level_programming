@@ -4,7 +4,7 @@
 
 class MyList(list):
     """my list from list superclass"""
-    
+
     def print_sorted(self):
         cp_list = self.copy()
         cp_list.sort()
