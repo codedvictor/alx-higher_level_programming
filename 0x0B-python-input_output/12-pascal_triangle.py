@@ -10,7 +10,7 @@ def pascal_triangle(n):
         return []
 
     trg = [[1]]
-    for x in range(x, n):
+    for x in range(1, n):
         row = [1]
         for y in range(1, x):
             row.append(trg[x - 1][y - 1] + trg[x - 1][y])
