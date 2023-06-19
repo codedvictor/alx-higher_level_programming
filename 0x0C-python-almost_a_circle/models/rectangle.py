@@ -80,3 +80,13 @@ class Rectangle(Base):
         rec = "[Rectangle] ({}) {}/{} - ".format(self.id, self.x, self.y)
         st = "{}/{}".format(self.width, self.height)
         return (rec + st)
+
+    def update(self, *args, **kwargs):
+        """assign args to each attr"""
+        if len(args) != 0 and args is not None:
+            get_attr = ['id', 'width', 'height', 'x', 'y']
+            for o in range(len(args)):
+                setattr(self, get_attr[o], args[o])
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
