@@ -92,6 +92,7 @@ class Rectangle(Base):
                 setattr(self, key, value)
     
     def to_dictionary(self):
+        """get attributes from disctionary"""
         dik = {}
         get_attr = ['id', 'width', 'height', 'x', 'y']
         for key in get_attr:
