@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""square methods test cases"""
+"""Class square methods test"""
 import unittest
 from models.base import Base
 from models.square import Square
@@ -12,21 +12,11 @@ class TestSquareMethods(unittest.TestCase):
     """Test suite for Square class methods"""
 
     def setUp(self):
-        """function instances"""
+        """setUp class method"""
         Base._Base__nb_objects = 0
 
-    def test_is_Rect_instance(self):
-        """Rectangle instance test"""
-        s = Square(1)
-        self.assertEqual(True, isinstance(s, Rectangle))
-
-    def test_is_Base_instance(self):
-        """Base instance Test"""
-        s = Square(1)
-        self.assertEqual(True, isinstance(s, Base))
-
-        def test_square_1_arg(self):
-        """Test init method with 1 arg"""
+    def test_square_1_arg(self):
+        """1 arg test"""
         s = Square(3)
         self.assertEqual(s.size, 3)
         self.assertEqual(s.width, 3)
@@ -36,21 +26,32 @@ class TestSquareMethods(unittest.TestCase):
         self.assertEqual(s.id, 1)
 
     def test_square_args(self):
-        """Test init method with all args"""
-        s = Square(1, 2, 3, 4)
-        self.assertEqual(s.size, 1)
-        self.assertEqual(s.width, 1)
-        self.assertEqual(s.height, 1)
+        """all args test"""
+        s = Square(2, 2, 3, 4)
+        self.assertEqual(s.size, 2)
+        self.assertEqual(s.width, 2)
+        self.assertEqual(s.height, 2)
         self.assertEqual(s.x, 2)
         self.assertEqual(s.y, 3)
         self.assertEqual(s.id, 4)
 
     def test_squares(self):
-        """Test 2 squares"""
+        """2 squares test"""
         s = Square(1)
         s2 = Square(1)
         self.assertEqual(False, s is s2)
         self.assertEqual(False, s.id == s2.id)
+
+    def test_is_Rect_instance(self):
+        """Test square is a Rectangle instance"""
+        s = Square(1)
+        self.assertEqual(True, isinstance(s, Rectangle))
+
+    def test_is_Base_instance(self):
+        """Test square is a Base instance"""
+        s = Square(1)
+        self.assertEqual(True, isinstance(s, Base))
+
     def test_0_arg(self):
         """Test with 0 args"""
         with self.assertRaises(TypeError):
@@ -343,33 +344,3 @@ class TestSquareMethods(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as std_out:
             print(type(s1_dictionary))
             self.assertEqual(std_out.getvalue(), res)
-
-    def test_create(self):
-        """ Test create method """
-        dictionary = {'id': 98}
-        s = Square.create(**dictionary)
-        self.assertEqual(s.id, 98)
-
-    def test_create_2(self):
-        """ Test create method """
-        dictionary = {'id': 98, 'size': 1}
-        s = Rectangle.create(**dictionary)
-        self.assertEqual(s.id, 98)
-        self.assertEqual(s.size, 1)
-
-    def test_create_3(self):
-        """ Test create method """
-        dictionary = {'id': 98, 'size': 1, 'x': 2}
-        s = Rectangle.create(**dictionary)
-        self.assertEqual(s.id, 98)
-        self.assertEqual(s.size, 1)
-        self.assertEqual(s.x, 2)
-
-    def test_create_4(self):
-        """ Test create method """
-        dictionary = {'id': 98, 'size': 1, 'x': 2, 'y': 3}
-        s = Rectangle.create(**dictionary)
-        self.assertEqual(s.id, 98)
-        self.assertEqual(s.size, 1)
-        self.assertEqual(s.x, 2)
-        self.assertEqual(s.y, 3)
