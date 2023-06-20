@@ -33,13 +33,13 @@ class Base:
         if not list_objs:
             pass
         else:
-            for i in range(len(list_objs)):
-                list_dik.append(list_objs[i].to_dictionary())
+            for q in range(len(list_objs)):
+                list_dik.append(list_objs[q].to_dictionary())
 
-        lists = cls.to_json_string(list_dic)
+        lists = cls.to_json_string(list_dik)
 
-        with open(filen, 'w') as f:
-            f.write(lists)
+        with open(filen, 'w') as fl:
+            fl.write(lists)
 
     @staticmethod
     def from_json_string(json_string):
