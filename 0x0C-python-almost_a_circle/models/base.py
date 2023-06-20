@@ -61,7 +61,7 @@ class Base:
     @classmethod
     def load_from_file(cls):
         """list of instances """
-        filename = "{}.json".format(cls.__name__)
+        filen = "{}.json".format(cls.__name__)
 
         if os.path.exists(filen) is False:
             return []
