@@ -76,3 +76,70 @@ class Base:
             list_obj.append(cls.create(**list_cls[index]))
 
         return list_obj
+
+    @classmethod
+    def save_to_file(cls, list_objs):
+        """ Save object in a file """
+        filen = "{}.json".format(cls.__name__)
+        list_dik = []
+
+        if not list_objs:
+            pass
+        else:
+            for j in range(len(list_objs)):
+                list_dic.append(list_objs[j].to_dictionary())
+
+        lists = cls.to_json_string(list_dik)
+
+        with open(filen, 'w') as fl:
+            fl.write(lists)
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Serialises in CSV file"""
+        filen = "{}.csv".format(cls.__name__)
+        if cls.__name__ == "Rectangle":
+            list_dik = [0, 0, 0, 0, 0]
+            list_keys = ['id', 'width', 'height', 'x', 'y']
+        else:
+            list_dik = [0, 0, 0, 0]
+            list_keys = ['id', 'size', 'x', 'y']
+
+        mat = []
+        if list_objs:
+            for obj in list_objs:
+                for l in range(len(list_keys)):
+                    list_dik[l] = obj.to_dictionary()[list_keys[l]]
+                mat.append(list_dik[:])
+
+        with open(filen, 'w') as fl:
+            writer = csv.writer(fl)
+            writer.writerows(mat)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Deserialises the CSV file"""
+        filen = "{}.csv".format(cls.__name__)
+
+        if os.path.exists(filen) is False:
+            return []
+
+        with open(filen, 'r') as fl:
+            reader = csv.reader(fl)
+            list_rows = list(reader)
+
+        if cls.__name__ == "Rectangle":
+            list_keys = ['id', 'width', 'height', 'x', 'y']
+        else:
+            list_keys = ['id', 'size', 'x', 'y']
+
+        mat = []
+        for row in list_rows:
+            dik_row = {}
+            for elt in enumerate(row):
+                dik_row[list_keys[elt[0]]] = int(elt[1])
+            mat.append(dic_row)
+
+        list_objs = []
+        for k in range(len(mat)):
+            list_objs.append(cls.create(**mat[k]))
