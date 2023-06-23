@@ -2,6 +2,7 @@
 """Write a class base"""
 import json
 import os
+import csv
 
 
 class Base:
@@ -87,7 +88,7 @@ class Base:
             pass
         else:
             for j in range(len(list_objs)):
-                list_dic.append(list_objs[j].to_dictionary())
+                list_dik.append(list_objs[j].to_dictionary())
 
         lists = cls.to_json_string(list_dik)
 
@@ -138,7 +139,7 @@ class Base:
             dik_row = {}
             for elt in enumerate(row):
                 dik_row[list_keys[elt[0]]] = int(elt[1])
-            mat.append(dic_row)
+            mat.append(dik_row)
 
         list_objs = []
         for k in range(len(mat)):
