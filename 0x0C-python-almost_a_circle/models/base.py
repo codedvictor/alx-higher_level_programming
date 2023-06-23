@@ -109,8 +109,8 @@ class Base:
         mat = []
         if list_objs:
             for obj in list_objs:
-                for l in range(len(list_keys)):
-                    list_dik[l] = obj.to_dictionary()[list_keys[l]]
+                for i in range(len(list_keys)):
+                    list_dik[i] = obj.to_dictionary()[list_keys[i]]
                 mat.append(list_dik[:])
 
         with open(filen, 'w') as fl:
@@ -120,12 +120,12 @@ class Base:
     @classmethod
     def load_from_file_csv(cls):
         """Deserialises the CSV file"""
-        filename = "{}.csv".format(cls.__name__)
+        filen = "{}.csv".format(cls.__name__)
 
-        if os.path.exists(filename) is False:
+        if os.path.exists(filen) is False:
             return []
 
-        with open(filename, 'r') as f:
+        with open(filen, 'r') as f:
             reader = csv.reader(f)
             list_rows = list(reader)
 
