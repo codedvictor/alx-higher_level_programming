@@ -120,13 +120,13 @@ class Base:
     @classmethod
     def load_from_file_csv(cls):
         """Deserialises the CSV file"""
-        filen = "{}.csv".format(cls.__name__)
+        filename = "{}.csv".format(cls.__name__)
 
-        if os.path.exists(filen) is False:
+        if os.path.exists(filename) is False:
             return []
 
-        with open(filen, 'r') as fl:
-            reader = csv.reader(fl)
+        with open(filename, 'r') as f:
+            reader = csv.reader(f)
             list_rows = list(reader)
 
         if cls.__name__ == "Rectangle":
@@ -136,11 +136,13 @@ class Base:
 
         mat = []
         for row in list_rows:
-            dik_row = {}
+            dic_row = {}
             for elt in enumerate(row):
-                dik_row[list_keys[elt[0]]] = int(elt[1])
-            mat.append(dik_row)
+                dic_row[list_keys[elt[0]]] = int(elt[1])
+            mat.append(dic_row)
 
         list_objs = []
-        for k in range(len(mat)):
-            list_objs.append(cls.create(**mat[k]))
+        for i in range(len(mat)):
+            list_objs.append(cls.create(**mat[i]))
+
+        return list_objs
