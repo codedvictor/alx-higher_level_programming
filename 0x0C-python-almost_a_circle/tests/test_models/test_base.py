@@ -51,3 +51,85 @@ class TestBaseMethods(unittest.TestCase):
         new = Base()
         with self.assertRaises(AttributeError):
             new.__nb_objects
+
+    def test_to_json_string(self):
+        """ Test Dictionary to JSON string """
+        r = Rectangle(2, 2)
+        dictionary = r.to_dictionary()
+        json_dictionary = Base.to_json_string([dictionary])
+        res = "[{}]\n".format(dictionary.__str__())
+
+        with patch('sys.stdout', new=StringIO()) as std_out:
+            print(json_dictionary)
+            self.assertEqual(std_out.getvalue(), res.replace("'", "\""))
+
+    def test_save_to_file(self):
+        """ Test save to file """
+        Square.save_to_file(None)
+        res = "[]"
+        with open("Square.json", "r") as file:
+            self.assertEqual(file.read(), res)
+
+        try:
+            os.remove("Square.json")
+        except Exception:
+            pass
+
+        Square.save_to_file([])
+        with open("Square.json", "r") as file:
+            self.assertEqual(file.read(), "[]")
+
+    def test_save_to_file_2(self):
+        """ Test save to file """
+        Rectangle.save_to_file(None)
+        res = "[]"
+        with open("Rectangle.json", "r") as file:
+            self.assertEqual(file.read(), res)
+        try:
+            os.remove("Rectangle.json")
+        except Exception:
+            pass
+
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", "r") as file:
+            self.assertEqual(file.read(), "[]")
+
+    def test_create(self):
+        """ Test create method """
+        dictionary = {'id': 98}
+        r = Rectangle.create(**dictionary)
+        self.assertEqual(r.id, 98)
+
+    def test_create_2(self):
+        """ Test create method """
+        dictionary = {'id': 98, 'width': 1}
+        r = Rectangle.create(**dictionary)
+        self.assertEqual(r.id, 98)
+        self.assertEqual(r.width, 1)
+
+    def test_create_3(self):
+        """ Test create method """
+        dictionary = {'id': 98, 'width': 1, 'height': 2}
+        r = Rectangle.create(**dictionary)
+        self.assertEqual(r.id, 98)
+        self.assertEqual(r.width, 1)
+        self.assertEqual(r.height, 2)
+
+    def test_create_4(self):
+        """ Test create method """
+        dictionary = {'id': 98, 'width': 1, 'height': 2, 'x': 3}
+        r = Rectangle.create(**dictionary)
+        self.assertEqual(r.id, 98)
+        self.assertEqual(r.width, 1)
+        self.assertEqual(r.height, 2)
+        self.assertEqual(r.x, 3)
+
+    def test_create_5(self):
+        """ Test create method """
+        dictionary = {'id': 98, 'width': 1, 'height': 2, 'x': 3, 'y': 4}
+        r = Rectangle.create(**dictionary)
+        self.assertEqual(r.id, 98)
+        self.assertEqual(r.width, 1)
+        self.assertEqual(r.height, 2)
+        self.assertEqual(r.x, 3)
+        self.assertEqual(r.y, 4)
