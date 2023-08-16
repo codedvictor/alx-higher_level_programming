@@ -1,13 +1,12 @@
 #!/usr/bin/node
+const eDict = require('./101-data.js').dict;
+let nDict = {};
 
-const eDict = require('./101-data').dict;
-const nDict = {};
-
-Object.keys(eDict).map (function (key) {
+for (let key in eDict) {
   if (nDict[eDict[key]] === undefined) {
-    nDict[eDict[key]] = [];
+    nDict[eDict[key]] = [key];
+  } else {
+    nDict[eDict[key]].push(key);
   }
-  nDict[eDict[key]].push(key);
-});
-
+}
 console.log(nDict);
