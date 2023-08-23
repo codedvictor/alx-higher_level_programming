@@ -13,7 +13,7 @@ from sys import argv
 
 if __name__ == "__main__":
     new_engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.
-                               format(sys.argv[1], argv[2], argv[3], argv[4]),
+                               format(argv[1], argv[2], argv[3], argv[4]),
                                pool_pre_ping=True)
 
     Session = sessionmaker(bind=new_engine)
