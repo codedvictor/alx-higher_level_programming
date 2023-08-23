@@ -1,13 +1,14 @@
 #!/usr/bin/python3
 
 """
-a script that adds the State object “Louisiana”
-to the database hbtn_0e_6_usa
+a script that deletes all State objects with a name containing
+the letter a from the database hbtn_0e_6_usa
 """
 
 from sqlalchemy import (create_engine)
 from model_state import State, Base
 from sqlalchemy.orm import sessionmaker
+from model_city import City
 from sys import argv
 
 
@@ -18,8 +19,8 @@ if __name__ == "__main__":
 
     Session = sessionmaker(bind=new_engine)
     session = Session()
-    
-    new_state = State(name='Louisiana')
-    session.add(new_state)
-    session.commit()
-    print(newstate.id)
+
+    state_city = session.query(State, City).order_by(State.id).\
+        filter(State.id == City.state_id).all()
+    for state, city in state_city:
+        print("{}: ({}) {}".format(state.name, city.id, city.name))
