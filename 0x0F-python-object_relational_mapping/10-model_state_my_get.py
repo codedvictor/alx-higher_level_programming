@@ -13,14 +13,14 @@ import sys
 
 if __name__ == "__main__":
     new_engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.
-                               format(sys.argv[1], sys.argv[2], sys.argv[3]),
-                               sys.argv[4], pool_pre_ping=True)
+                               format(sys.argv[1], sys.argv[2], sys.argv[3],
+                               sys.argv[4]), pool_pre_ping=True)
 
     Session = sessionmaker(bind=new_engine)
     session = Session()
     state = session.query(State).order_by(State.id).\
         filter(State.name == sys.argv[4]).first()
-    if state:
-        print(state.id)
-    else:
+    if not state:
         print('Not found')
+    else:
+        print(state.id)
