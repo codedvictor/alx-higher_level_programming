@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-a script that creates the State “California” with the City 
+a script that creates the State “California” with the City
 “San Francisco” from the database hbtn_0e_6_usa
 """
 
@@ -27,5 +27,5 @@ if __name__ == "__main__":
 
     session.add(n_state)
     session.add(n_city)
-    
+
     session.commit()
