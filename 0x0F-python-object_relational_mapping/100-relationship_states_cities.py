@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 
 """
-a script that deletes all State objects with a name containing
-the letter a from the database hbtn_0e_6_usa
+a script that creates the State “California” with the City 
+“San Francisco” from the database hbtn_0e_6_usa
 """
 
 from sqlalchemy import (create_engine)
@@ -22,9 +22,10 @@ if __name__ == "__main__":
     session = Session()
 
     n_state = State(name='California')
-    n_city = City(name='San Franscisco', state=n_state)
+    n_city = City(name='San Francisco', state=n_state)
     n_state.cities.append(n_city)
 
     session.add(n_state)
     session.add(n_city)
+    
     session.commit()

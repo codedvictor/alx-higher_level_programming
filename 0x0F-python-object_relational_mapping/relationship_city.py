@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-"""Defines a city class which inherit from base
+"""a city class which inherit from base
 """
 
 from sqlalchemy import Column, Integer, String, ForeignKey

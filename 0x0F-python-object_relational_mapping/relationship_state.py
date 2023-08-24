@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-Defines a State class which inherit from base
+a State class which inherit from base
 """
 from sqlalchemy import Column, Integer, String, MetaData
 from sqlalchemy.ext.declarative import declarative_base
@@ -19,4 +19,4 @@ class State(Base):
     __tablename__ = 'states'
     id = Column(Integer, unique=True, nullable=False, primary_key=True)
     name = Column(String(128),  nullable=False)
-    cities = relationship('City', backref='state')
+    cities = relationship('City', cascade='all, delete, delete-orphan', backref='state')
