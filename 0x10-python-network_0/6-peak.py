@@ -13,11 +13,11 @@ def find_peak(list_of_integers):
     elif list_size == 2:
         return max(list_of_integers)
 
-    mid_int = int(list_size / 2)
-    peak = list_of_integers[mid_int]
-    if peak > list_of_integers[mid_int - 1] and peak > list_of_integers[mid_int + 1]:
-        return peak
-    elif peak < list_of_integers[mid_int - 1]:
-        return find_peak(list_of_integers[:mid_int])
+    mid_t = int(list_size / 2)
+    pk = list_of_integers[mid_t]
+    if pk > list_of_integers[mid_t - 1] and pk > list_of_integers[mid_t + 1]:
+        return pk
+    elif pk < list_of_integers[mid_t - 1]:
+        return find_peak(list_of_integers[:mid_t])
     else:
-        return find_peak(list_of_integers[mid_int + 1:])
+        return find_peak(list_of_integers[mid_t + 1:])
