@@ -9,8 +9,8 @@ if __name__ == "__main__":
     url = argv[1]
 
     req = requests.get(url)
-    html = reg.status_code
+    html = req.status_code
     if html >= 400:
         print('Error code: {}'.format(html))
     else:
-        print(reg.text)
+        print(req.text)
