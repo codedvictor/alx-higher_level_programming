@@ -7,15 +7,15 @@ from sys import argv
 
 if __name__ == "__main__":
     letters = "" if len(argv) == 1 else argv[1]
-    payload = {"q": letters}
+    wordload = {"q": letters}
     url = "http://0.0.0.0:5000/search_user"
 
-    req = requests.post(url, data=payload)
+    req = requests.post(url, data=wordload)
     try:
         html = req.json()
         if html == {}:
             print('No result')
         else:
-            print("[{}] {}".format(html.get("id", html.get("name")))
+            print("[{}] {}".format(html.get("id"), html.get("name")))
     except ValueError:
         print("Not a valid JSON")
