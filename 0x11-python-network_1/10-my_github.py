@@ -14,5 +14,4 @@ if __name__ == "__main__":
     url = "https://api.github.com/user"
 
     req = requests.post(url, auth=authkey)
-    html = req.json()
-    print(html.get("id"))
+    print(req.json().get("id"))
