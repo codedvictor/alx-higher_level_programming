@@ -10,7 +10,7 @@ from sys import argv
 if __name__ == "__main__":
     url = argv[1]
     val = {
-            'email' : argv[2]
+            'email': argv[2]
             }
     data = urllib.parse.urlencode(val)
     data = data.encode("ascii")
